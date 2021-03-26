@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"encoding/json"
 	"github.com/gorilla/mux"
-	"ecommerce-backend"
+	"ecommerce-backend/product"
 	"reflect" //only needed for debugging purposes
 )
 
@@ -45,6 +45,7 @@ func myProduct(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(p)
 	log.Println(reflect.TypeOf(p))
 }
+
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Welcome to the HomePage!")
 	fmt.Println("Endpoint Hit: homePage")
@@ -101,65 +102,88 @@ func getProduct(w http.ResponseWriter, r *http.Request) {
 }
 
 func getProducts(w http.ResponseWriter, r *http.Request) {
-	var Products []Product;
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
-	Products = getAllProducts()
+	Products := product.GetAllProducts()
 	json.NewEncoder(w).Encode(Products)
 }
 
-func getAllProducts() []Product {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// func getAllProducts() []Product {
 	
-	var Products []Product
+// 	var Products []Product
 
-	//Append Product 1
-	Products = append(Products,
-		Product{
-			Id:     "111",
-			Name:   "Shoes",
-			Colour: "red",
-			Price:  "100",
-			Image:  "https://images.asos-media.com/products/adidas-originals-ozweego-trainers-in-grey-multi/22322025-4?$XXL$&wid=513&fit=constrain",
-			Sizes: []string{
-				"s",
-				"m",
-				"l",
-			},
-			Special:            false,
-			SpecialPrice:       0,
-			SpecialDescription: "None",
-			Category:           "Tops, Jumpers, Warm, Winter",
-		})
+// 	// //Append Product 1
+// 	// Products = append(Products,
+// 	// 	Product{
+// 	// 		Id:     "111",
+// 	// 		Name:   "Shoes",
+// 	// 		Colour: "red",
+// 	// 		Price:  "100",
+// 	// 		Image:  "https://images.asos-media.com/products/adidas-originals-ozweego-trainers-in-grey-multi/22322025-4?$XXL$&wid=513&fit=constrain",
+// 	// 		Sizes: []string{
+// 	// 			"s",
+// 	// 			"m",
+// 	// 			"l",
+// 	// 		},
+// 	// 		Special:            false,
+// 	// 		SpecialPrice:       0,
+// 	// 		SpecialDescription: "None",
+// 	// 		Category:           "Tops, Jumpers, Warm, Winter",
+// 	// 	})
 
-		//Append Product 2
-	Products = append(Products, 
-		Product{
-			Id:     "23232",
-			Name:   "TShirt",
-			Brand:  "Adidas",
-			Colour: "blue",
-			Price:  "50",
-			Image:  "https://images.asos-media.com/products/under-armour-sportstyle-logo-t-shirt-in-burgundy/21992029-1-burgundy?$XXL$&wid=513&fit=constrain",
-			Sizes: []string{
-				"S",
-				"M",
-				"L",
-			},
-			Special:            false,
-			SpecialPrice:       0,
-			SpecialDescription: "None",
-			Category:           "Tops, Jumpers, Warm, Winter",
-			Length:             "10cm",
-			Width:              "20cm",
-		})
+// 	// 	//Append Product 2
+// 	// Products = append(Products, 
+// 	// 	Product{
+// 	// 		Id:     "23232",
+// 	// 		Name:   "TShirt",
+// 	// 		Brand:  "Adidas",
+// 	// 		Colour: "blue",
+// 	// 		Price:  "50",
+// 	// 		Image:  "https://images.asos-media.com/products/under-armour-sportstyle-logo-t-shirt-in-burgundy/21992029-1-burgundy?$XXL$&wid=513&fit=constrain",
+// 	// 		Sizes: []string{
+// 	// 			"S",
+// 	// 			"M",
+// 	// 			"L",
+// 	// 		},
+// 	// 		Special:            false,
+// 	// 		SpecialPrice:       0,
+// 	// 		SpecialDescription: "None",
+// 	// 		Category:           "Tops, Jumpers, Warm, Winter",
+// 	// 		Length:             "10cm",
+// 	// 		Width:              "20cm",
+// 	// 	})
 
-		// fmt.Printf(reflect.TypeOf(Products))
-		// println("----")
-		// fmt.Printf(reflect.ValueOf(Products).Kind())
-		// println("----")
-		// fmt.Printf("%T\n", Products[0])
-		// fmt.Println(Products[0])
+// 		// fmt.Printf(reflect.TypeOf(Products))
+// 		// println("----")
+// 		// fmt.Printf(reflect.ValueOf(Products).Kind())
+// 		// println("----")
+// 		// fmt.Printf("%T\n", Products[0])
+// 		// fmt.Println(Products[0])
 
-		return Products
-}
+// 		return Products
+// }
 
